@@ -1,0 +1,49 @@
+﻿@model AplikaceEvidencePojisteni.Models.Insurance
+
+@{
+    ViewData["Title"] = "Vytvořit pojištění";
+}
+
+<h1>Vytvořit pojištění</h1>
+
+<hr />
+
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="InsuranceType" class="control-label"></label>
+                <input asp-for="InsuranceType" class="form-control" placeholder="Pojištění majetku" />
+                <span asp-validation-for="InsuranceType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label"></label>
+                <input asp-for="Subject" class="form-control" placeholder="Dům" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" placeholder="5 000 000" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValidFrom" class="control-label"></label>
+                <input asp-for="ValidFrom" class="form-control" />
+                <span asp-validation-for="ValidFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValidUntil" class="control-label"></label>
+                <input asp-for="ValidUntil" class="form-control" />
+                <span asp-validation-for="ValidUntil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="hidden" asp-for="UserId" value="@ViewData["UserId"]" />
+            </div>
+            <div class="form-group py-2">
+                <input type="submit" value="Vytvořit" class="btn btn-primary" />
+                <a asp-action="Details" asp-controller="Users" asp-route-id="@ViewData["UserId"]" class="btn btn-secondary">Zpět</a>
+            </div>
+        </form>
+    </div>
+</div>

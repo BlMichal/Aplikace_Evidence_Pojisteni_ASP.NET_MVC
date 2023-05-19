@@ -1,0 +1,45 @@
+﻿@model IEnumerable<AplikaceEvidencePojisteni.Models.User>
+
+@{
+    ViewData["Title"] = "Evidence pojištěnců";
+}
+
+<h1>Evidence pojištěnců</h1>
+
+<p class="text-center py-5">
+    <a asp-action="Create" class="btn btn-primary btn-lg">Vytvořit pojištěnce</a>
+</p>
+
+<div class="table-responsive rounded-3">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>
+                    Jméno:
+                </th>
+                <th>
+                    Adresa:
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model) 
+            {
+                <tr>
+                    <td>
+                        <a asp-action="Details" asp-route-id="@item.UserId">
+                           @Html.DisplayFor(modelItem => item.FirstName) @Html.DisplayFor(modelItem => item.LastName)
+                        </a>
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.City),@Html.DisplayFor(modelItem => item.Street),@Html.DisplayFor(modelItem => item.ZipCode)
+                    </td>
+                    <td class="text-center">
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@item.UserId">Upravit</a> |
+                        <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.UserId">Smazat</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
