@@ -1,0 +1,16 @@
+﻿@model AplikaceEvidencePojisteni.Models.User
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h1>Delete</h1>
+
+<h3>Opravdu si přejete smazat uživatele: <b>@Model.FirstName @Model.LastName</b>?</h3>
+
+    
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="UserId" />
+        <input type="submit" value="Smazat" class="btn btn-danger" /> |
+    <a asp-action="Index" class="btn btn-secondary">Zpět</a>
+    </form>

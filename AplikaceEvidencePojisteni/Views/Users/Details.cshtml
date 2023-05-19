@@ -1,0 +1,102 @@
+﻿@model AplikaceEvidencePojisteni.Models.User
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Pojištěnec</h1>
+
+<div class="table-bordered">
+    <h3>@Model.FirstName @Model.LastName</h3>
+    <hr />
+    <dl class="row">
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.FirstName):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.LastName):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Email):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Phone):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Phone)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.City):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.City)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.Street):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.Street)
+        </dd>
+        <dt class = "col-sm-2">
+            @Html.DisplayNameFor(model => model.ZipCode):
+        </dt>
+        <dd class = "col-sm-10">
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+    </dl>
+</div>
+
+<div class="py-5">
+    <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model?.UserId">Edit</a> |
+    <a class="btn btn-secondary" asp-action="Index">Back to List</a>
+</div>
+
+
+<h2>Pojištění</h2>
+
+<p class="text-center py-3">
+    <a asp-action="Create" asp-controller="Insurances" asp-route-userId="@Model!.UserId" class="btn btn-primary">Vytvořit nové pojištění</a>
+</p>
+
+@if (Model.Insurances.Any())
+{
+    <table class="table">
+        <tr>
+            <th>Insurance Type</th>
+            <th>Subject</th>
+            <th>Amount</th>
+            <th>Valid From</th>
+            <th>Valid Until</th>
+            <th></th>
+        </tr>
+        @foreach (var insurance in Model.Insurances)
+        {
+            <tr>
+                <td>@insurance.InsuranceType</td>
+                <td>@insurance.Subject</td>
+                <td>@insurance.Amount</td>
+                <td>@insurance.ValidFrom.ToShortDateString()</td>
+                <td>@insurance.ValidUntil.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Details" asp-controller="Insurances" asp-route-id="@insurance.InsuranceId">Detaily</a> |
+                    <a asp-action="Edit" asp-controller="Insurances" asp-route-id="@insurance.InsuranceId">Upravit</a> |
+                    <a asp-action="Delete" asp-controller="Insurances" asp-route-id="@insurance.InsuranceId">Smazat</a>
+                </td>
+            </tr>
+        }
+    </table>
+}
+else
+{
+    <p>No insurance found for this user.</p>
+}
+

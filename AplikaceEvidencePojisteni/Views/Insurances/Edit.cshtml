@@ -1,0 +1,51 @@
+﻿@model AplikaceEvidencePojisteni.Models.Insurance
+
+@{
+    ViewData["Title"] = "Úprava pojištěnce";
+}
+
+<h1>Edit</h1>
+
+<h4>Insurance</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="InsuranceId" />
+            <div class="form-group">
+                <label asp-for="InsuranceType" class="control-label"></label>
+                <input asp-for="InsuranceType" class="form-control" />
+                <span asp-validation-for="InsuranceType" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Subject" class="control-label"></label>
+                <input asp-for="Subject" class="form-control" />
+                <span asp-validation-for="Subject" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Amount" class="control-label"></label>
+                <input asp-for="Amount" class="form-control" />
+                <span asp-validation-for="Amount" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValidFrom" class="control-label"></label>
+                <input asp-for="ValidFrom" class="form-control" />
+                <span asp-validation-for="ValidFrom" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ValidUntil" class="control-label"></label>
+                <input asp-for="ValidUntil" class="form-control" />
+                <span asp-validation-for="ValidUntil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Details" asp-controller="Users" asp-route-id="@Model.UserId" class="btn btn-secondary">Zpět</a>
+</div>
+
